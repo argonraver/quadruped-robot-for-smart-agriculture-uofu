@@ -1,0 +1,107 @@
+launch: # This launches two legs worth of nodes but none of the command nodes.
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis0"
+    param:
+    -
+      name: "node_id"
+      value: 5
+    -
+      name: "interface"
+      value: "can2"
+      
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis1"
+    param:
+    -
+      name: "node_id"
+      value: 6
+    -
+      name: "interface"
+      value: "can2"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis2"
+    param:
+    -
+      name: "node_id"
+      value: 7
+    -
+      name: "interface"
+      value: "can2"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis3"
+    param:
+    -
+      name: "node_id"
+      value: 8
+    -
+      name: "interface"
+      value: "can2"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "right_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_one"
+    -
+      name: "leg_sub"
+      value: "leg_one_commands"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "left_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_two"
+    -
+      name: "leg_sub"
+      value: "leg_two_commands"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "right_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis0"
+    -
+      name: "lower_leg_axis"
+      value: "axis1"
+    -
+      name: "leg_number"
+      value: "leg_one"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "left_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis2"
+    -
+      name: "lower_leg_axis"
+      value: "axis3"
+    -
+      name: "leg_number"
+      value: "leg_two"
