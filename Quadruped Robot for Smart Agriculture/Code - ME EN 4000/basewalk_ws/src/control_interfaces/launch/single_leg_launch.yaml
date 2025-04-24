@@ -1,0 +1,54 @@
+launch: # This launches but one node to control one leg.
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis0"
+    param:
+    -
+      name: "node_id"
+      value: 3
+    -
+      name: "interface"
+      value: "can0"
+      
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis1"
+    param:
+    -
+      name: "node_id"
+      value: 4
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "only_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_one"
+    -
+      name: "leg_sub"
+      value: "leg_one_commands"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "only_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis0"
+    -
+      name: "lower_leg_axis"
+      value: "axis1"
+    -
+      name: "leg_number"
+      value: "leg_one"
