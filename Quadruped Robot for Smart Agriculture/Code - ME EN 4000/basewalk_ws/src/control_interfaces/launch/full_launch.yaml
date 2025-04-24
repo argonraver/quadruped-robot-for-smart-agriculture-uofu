@@ -1,0 +1,236 @@
+launch: # Launches all leg nodes and command nodes.
+
+- node:
+    pkg: "commander"
+    exec: "commander"
+    name: "ssh_listener"
+
+- node:
+    pkg: "cpp_controller_node"
+    exec: "cpp_controller_node"
+    name: "central_controller"
+    param:
+    -
+      name: "legNumOne"
+      value: "leg_one"
+    -
+      name: "legNumTwo"
+      value: "leg_two"
+    -
+      name: "legNumThr"
+      value: "leg_three"
+    -
+      name: "legNumFou"
+      value: "leg_four"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis0"
+    param:
+    -
+      name: "node_id"
+      value: 1
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis1"
+    param:
+    -
+      name: "node_id"
+      value: 2
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis2"
+    param:
+    -
+      name: "node_id"
+      value: 3
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis3"
+    param:
+    -
+      name: "node_id"
+      value: 4
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis4"
+    param:
+    -
+      name: "node_id"
+      value: 5
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis5"
+    param:
+    -
+      name: "node_id"
+      value: 6
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis6"
+    param:
+    -
+      name: "node_id"
+      value: 7
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "odrive_can"
+    exec: "odrive_can_node"
+    name: "can_node"
+    namespace: "odrive_axis7"
+    param:
+    -
+      name: "node_id"
+      value: 8
+    -
+      name: "interface"
+      value: "can0"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "rear_right_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_one"
+    -
+      name: "leg_sub"
+      value: "leg_one_commands"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "rear_left_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_two"
+    -
+      name: "leg_sub"
+      value: "leg_two_commands"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "front_right_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_three"
+    -
+      name: "leg_sub"
+      value: "leg_three_commands"
+
+- node:
+    pkg: "leg_node"
+    exec: "leg"
+    name: "front_left_leg"
+    param:
+    -
+      name: "leg_number"
+      value: "leg_four"
+    -
+      name: "leg_sub"
+      value: "leg_four_commands"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "rr_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis0"
+    -
+      name: "lower_leg_axis"
+      value: "axis1"
+    -
+      name: "leg_number"
+      value: "leg_one"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "rl_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis2"
+    -
+      name: "lower_leg_axis"
+      value: "axis3"
+    -
+      name: "leg_number"
+      value: "leg_two"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "fr_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis4"
+    -
+      name: "lower_leg_axis"
+      value: "axis5"
+    -
+      name: "leg_number"
+      value: "leg_three"
+
+- node:
+    pkg: "odrive_controller"
+    exec: "odrive_controller"
+    name: "fl_leg_controller"
+    param:
+    -
+      name: "upper_leg_axis"
+      value: "axis6"
+    -
+      name: "lower_leg_axis"
+      value: "axis7"
+    -
+      name: "leg_number"
+      value: "leg_four"
